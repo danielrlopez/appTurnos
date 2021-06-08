@@ -30,11 +30,13 @@ public class ComercioController {
 	public List<ComercioEntity> getAll(){
 		return comercioService.getAll();
 	}
+	//*************************
 	// consultar turnos 
 	@GetMapping(path = "/comercio/{id_comercio}/turnos")
 	public List<TurnosEntity> darTurnos(@PathVariable Integer id_comercio){
 		return comercioService.darTurnos();
 	}
+	//***********************
 	
 	//listar por id
 	

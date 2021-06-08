@@ -30,6 +30,8 @@ public class ServicioService implements IServicioService{
 			return null;
 		}
 	}
+	
+
 
 	@Override
 	public ServicioEntity crearServicio(ServicioEntity servicioEntity) {
@@ -50,6 +52,18 @@ public class ServicioService implements IServicioService{
 	public void eliminarServicio(Integer idServicio) {
 
 		servicioRepository.deleteById(idServicio);
+	}
+	
+
+	@Override
+	public ServicioEntity buscarPorIdComecio(Integer idComercio) {
+		Optional<ServicioEntity> optional = servicioRepository.findById(idComercio);
+		if(optional.isPresent()) {
+			return optional.get();
+		}else {
+			return null;
+		}
+		
 	}
 
 }

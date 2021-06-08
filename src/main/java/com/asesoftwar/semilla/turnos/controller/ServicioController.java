@@ -22,6 +22,18 @@ public class ServicioController {
 	@Autowired
 	private IServicioService servicioService;
 	
+	// buscar por ID
+	@GetMapping(path = "/busComercio")
+	public ServicioEntity buscarPorIdComercio(@RequestParam Integer idComercio) {
+			return servicioService.buscarPorIdComecio(idComercio);
+	}
+	
+	
+	
+	
+	
+	
+	
 	//liastar todos
 	
 	@GetMapping(path = "/listar")
