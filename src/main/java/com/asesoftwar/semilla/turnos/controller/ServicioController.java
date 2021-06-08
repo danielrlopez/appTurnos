@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.asesoftwar.semilla.turnos.entity.ComercioEntity;
+
 import com.asesoftwar.semilla.turnos.entity.ServicioEntity;
 
 import com.asesoftwar.semilla.turnos.service.IServicioService;
@@ -59,6 +59,7 @@ public class ServicioController {
 	public void eliminarServico(@RequestParam Integer idServicio) {
 		servicioService.eliminarServicio(idServicio);
 	}
+	
 	
 	
 

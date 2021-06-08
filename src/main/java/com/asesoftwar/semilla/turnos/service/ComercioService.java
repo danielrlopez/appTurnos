@@ -7,7 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.asesoftwar.semilla.turnos.entity.ComercioEntity;
+import com.asesoftwar.semilla.turnos.entity.TurnosEntity;
 import com.asesoftwar.semilla.turnos.repository.IComercioRepository;
+import com.asesoftwar.semilla.turnos.repository.ITurnoRepository;
 
 @Service
 public class ComercioService implements IComercioService {
@@ -15,11 +17,20 @@ public class ComercioService implements IComercioService {
 	
 	@Autowired
 	private IComercioRepository comercioRepository;
+	
+	@Autowired
+	private ITurnoRepository turnoRepository;
 
 	@Override
 	public List<ComercioEntity> getAll() {
 		
 		return comercioRepository.findAll();
+	}
+	//consultar turnos 
+	@Override
+	public List<TurnosEntity> darTurnos() {
+		
+		return turnoRepository.findAll();
 	}
 	//consultar comercio por ID
 	@Override
@@ -59,6 +70,8 @@ public class ComercioService implements IComercioService {
 
 		
 	}
+
+	
 	
 	
 

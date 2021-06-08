@@ -1,8 +1,8 @@
 package com.asesoftwar.semilla.turnos.entity;
 
+import java.sql.Date;
 import java.sql.Time;
 import java.util.List;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -13,34 +13,32 @@ import javax.persistence.Table;
 
 import lombok.Data;
 
-@Data 
+@Data
 @Entity
-@Table(name = "servicios")
+@Table(name = "turnos")
 
-public class ServicioEntity {
+
+public class TurnosEntity {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)// persistir objetos, columna generada automaticamente 
+	@Column(name = "id_turno")
+	private Integer idTurno;
+	
 	@Column(name = "id_servicio")
 	private Integer idServicio;
 	
-	@Column(name = "id_comercio")
-	private Integer idComercio;
+	@Column(name = "fecha_turno")
+	private Date fechaTurno;
 	
-	@Column(name = "nom_servicio")
-	private String nomServicio;
+	@Column(name = "hora_inicio")
+	private Time horaInicio;
 	
-	@Column(name = "hora_apertura")
-	private Time horaApertura;
+	@Column(name = "hora_fin")
+	private Time horaFin;
 	
-	@Column(name = "hora_cierre")
-	private Time horaCierre;
+	@Column(name = "estado")
+	private Integer estado;
 	
-	@Column(name = "duracion")
-	private Integer duracion;
-	
-	@OneToMany(mappedBy = "idServicio")
-	private List<TurnosEntity> turnos;
-
 
 }

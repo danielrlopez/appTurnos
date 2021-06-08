@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.asesoftwar.semilla.turnos.entity.ComercioEntity;
-
+import com.asesoftwar.semilla.turnos.entity.TurnosEntity;
 import com.asesoftwar.semilla.turnos.service.IComercioService;
 
 
@@ -29,6 +29,11 @@ public class ComercioController {
 	@GetMapping(path = "/all")
 	public List<ComercioEntity> getAll(){
 		return comercioService.getAll();
+	}
+	// consultar turnos 
+	@GetMapping(path = "/comercio/{id_comercio}/turnos")
+	public List<TurnosEntity> darTurnos(@PathVariable Integer id_comercio){
+		return comercioService.darTurnos();
 	}
 	
 	//listar por id
