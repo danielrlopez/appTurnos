@@ -28,8 +28,7 @@ public class ComercioEntity {
 	
 	@Column(name = "aforo_maximo")
 	private Integer aforo_maximo;
-	
-	
+		
 	@OneToMany(mappedBy = "idComercio")
 	private List<ServicioEntity> comercios;
 

@@ -1,7 +1,7 @@
 package com.asesoftwar.semilla.turnos.entity;
 
-import java.sql.Date;
-import java.sql.Time;
+import java.util.Date;
+
 import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -10,6 +10,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 import lombok.Data;
 
@@ -29,13 +31,16 @@ public class TurnosEntity {
 	private Integer idServicio;
 	
 	@Column(name = "fecha_turno")
+	@Temporal(TemporalType.TIMESTAMP)
 	private Date fechaTurno;
 	
 	@Column(name = "hora_inicio")
-	private Time horaInicio;
+	@Temporal(TemporalType.TIME)
+	private Date horaInicio;
 	
 	@Column(name = "hora_fin")
-	private Time horaFin;
+	@Temporal(TemporalType.TIME)
+	private Date horaFin;
 	
 	@Column(name = "estado")
 	private Integer estado;

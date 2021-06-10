@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.asesoftwar.semilla.turnos.dto.ComercioDTO;
+import com.asesoftwar.semilla.turnos.dto.ResponseDTO;
 import com.asesoftwar.semilla.turnos.entity.ComercioEntity;
 import com.asesoftwar.semilla.turnos.entity.TurnosEntity;
 import com.asesoftwar.semilla.turnos.service.IComercioService;
@@ -27,46 +29,38 @@ public class ComercioController {
 	//listar todos
 	
 	@GetMapping(path = "/all")
-	public List<ComercioEntity> getAll(){
+	public ResponseDTO getAll(){
 		return comercioService.getAll();
 	}
-	//*************************
-	// consultar turnos 
-	@GetMapping(path = "/comercio/{id_comercio}/turnos")
-	public List<TurnosEntity> darTurnos(@PathVariable Integer id_comercio){
-		return comercioService.darTurnos();
-	}
-	//***********************
+
 	
 	//listar por id
 	
 	@GetMapping(path = "/buscar")
-	public ComercioEntity getComercioById(@RequestParam Integer id_comercio) {
+	public ResponseDTO getComercioById(@RequestParam Integer id_comercio) {
 		return comercioService.getComercioById(id_comercio);
 	}
 
 	//crear comercio
 	
 	@PostMapping(path = "/crear", consumes = "application/json",produces = "application/json")
-	public ComercioEntity createComercio(@RequestBody ComercioEntity entity) {
-		try {
+	public ResponseDTO createComercio(@RequestBody ComercioDTO entity) {
+	
 			return comercioService.createComercio(entity);
-		} catch (Exception e) {
-			return null;
-		}
+		
 	}
 	
 	/// editar usuario //
 	@PostMapping(path = "/editar", consumes = "application/json",produces = "application/json")
 	
-	public ComercioEntity editComercio(@RequestBody ComercioEntity entity) {
+	public ResponseDTO editComercio(@RequestBody ComercioDTO entity) {
 		return comercioService.updateComercio(entity);
 	}
 	
 	///eliminar 
 	@GetMapping(path = "/eliminar")
-	public void eliminarComercio(@RequestParam Integer id_comercio) {
-		comercioService.deleteComercio(id_comercio);
+	public ResponseDTO eliminarComercio(@RequestParam Integer id_comercio) {
+		 return comercioService.deleteComercio(id_comercio);
 	}
 	
 	

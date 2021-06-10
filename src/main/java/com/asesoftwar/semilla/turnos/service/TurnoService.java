@@ -21,11 +21,18 @@ public class TurnoService implements ITurnosService {
 	
 	@Autowired
 	private IComercioRepository comercioRepository;
-	
-	
-	
+
 	
 	@Override
+	public TurnosEntity consultarTurnoPorComercio(Integer idServicio) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+	
+	
+	
+	/**@Override
 	public TurnosEntity consultarTurnoPorComercio(Integer idServicio) {
 		
 		ComercioEntity ce = comercioRepository.getById(idServicio);
@@ -44,11 +51,7 @@ public class TurnoService implements ITurnosService {
 		}else {
 			return null;
 		}
-	}
+	}*/
 
-	private Optional<ServicioEntity> servicioRepository.findById(ce.getId_comercio())(Optional<ServicioEntity> servicioslist) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 }

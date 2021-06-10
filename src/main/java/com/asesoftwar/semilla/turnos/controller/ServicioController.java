@@ -10,7 +10,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-
+import com.asesoftwar.semilla.turnos.dto.ResponseDTO;
+import com.asesoftwar.semilla.turnos.dto.ServicioDTO;
 import com.asesoftwar.semilla.turnos.entity.ServicioEntity;
 
 import com.asesoftwar.semilla.turnos.service.IServicioService;
@@ -22,54 +23,42 @@ public class ServicioController {
 	@Autowired
 	private IServicioService servicioService;
 	
-	// buscar por ID
-	@GetMapping(path = "/busComercio")
-	public ServicioEntity buscarPorIdComercio(@RequestParam Integer idComercio) {
-			return servicioService.buscarPorIdComecio(idComercio);
-	}
-	
-	
-	
-	
-	
 	
 	
 	//liastar todos
 	
 	@GetMapping(path = "/listar")
-	public List<ServicioEntity> getall(){
-		return servicioService.listarTodos();
+	public ResponseDTO getall(){
+		return servicioService.getAll();
 	}
 	
 	// buscar por ID
 	@GetMapping(path = "/buscar")
-	public ServicioEntity buscarPorId(@RequestParam Integer idServicio) {
-		return servicioService.buscarPorID(idServicio);
+	public ResponseDTO buscarPorId(@RequestParam Integer idServicio) {
+		return servicioService.getServicoById(idServicio);
 	}
 	
 	//crear servicios
 	
 	@PostMapping(path = "/crear", consumes = "application/json",produces = "application/json")
-	public ServicioEntity crearServicio(@RequestBody ServicioEntity entity) {
-		try {
-			return servicioService.crearServicio(entity);
-		} catch (Exception e) {
-			return null;
-		}
+	public ResponseDTO crearServicio(@RequestBody ServicioDTO entity) {
+		
+			return servicioService.createServicio(entity);
+		
 	}
 	
 	//editar servico
 	
 	@PostMapping(path = "/editar", consumes = "application/json",produces = "application/json")
 	
-	public ServicioEntity editarServicio(@RequestBody ServicioEntity entity) {
-		return servicioService.editarServicio(entity);
+	public ResponseDTO editarServicio(@RequestBody ServicioDTO entity) {
+		return servicioService.updateServicio(entity);
 	}
 	
 	//Eliminar servico
 	@GetMapping(path = "/eliminar")
-	public void eliminarServico(@RequestParam Integer idServicio) {
-		servicioService.eliminarServicio(idServicio);
+	public ResponseDTO eliminarServico(@RequestParam Integer idServicio) {
+		return servicioService.deleteServicio(idServicio);
 	}
 	
 	

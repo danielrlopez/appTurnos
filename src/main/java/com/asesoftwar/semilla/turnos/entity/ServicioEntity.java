@@ -1,6 +1,7 @@
 package com.asesoftwar.semilla.turnos.entity;
 
 import java.sql.Time;
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -10,6 +11,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 import lombok.Data;
 
@@ -31,10 +34,12 @@ public class ServicioEntity {
 	private String nomServicio;
 	
 	@Column(name = "hora_apertura")
-	private Time horaApertura;
+	@Temporal(TemporalType.TIME)
+	private Date horaApertura;
 	
 	@Column(name = "hora_cierre")
-	private Time horaCierre;
+	@Temporal(TemporalType.TIME)
+	private Date horaCierre;
 	
 	@Column(name = "duracion")
 	private Integer duracion;

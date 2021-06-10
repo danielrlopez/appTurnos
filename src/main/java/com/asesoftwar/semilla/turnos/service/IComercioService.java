@@ -2,19 +2,18 @@ package com.asesoftwar.semilla.turnos.service;
 
 import java.util.List;
 
-import com.asesoftwar.semilla.turnos.entity.ComercioEntity;
-import com.asesoftwar.semilla.turnos.entity.TurnosEntity;
+import com.asesoftwar.semilla.turnos.dto.ComercioDTO;
+import com.asesoftwar.semilla.turnos.dto.ResponseDTO;
 
 
 public interface IComercioService {
 	
-	public List<ComercioEntity> getAll();
+	public ResponseDTO getAll();
 	
-	public List<TurnosEntity> darTurnos();
-	
-	public ComercioEntity getComercioById(Integer id_comercio);
-	public ComercioEntity createComercio(ComercioEntity comercioEntity);
-	public ComercioEntity updateComercio(ComercioEntity comercioEntity);
-	public void deleteComercio(Integer id_comercio);
+		
+	public ResponseDTO getComercioById(Integer id_comercio);
+	public ResponseDTO createComercio(ComercioDTO comercioDTO);
+	public ResponseDTO updateComercio(ComercioDTO comercioDTO);
+	public ResponseDTO deleteComercio(Integer id_comercio);
 
 }
