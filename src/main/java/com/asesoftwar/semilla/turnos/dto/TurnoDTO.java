@@ -33,5 +33,17 @@ public class TurnoDTO {
 	@Column(name = "estado")
 	private Integer estado;
 	
+	public TurnoDTO() {}
+	
+	public TurnoDTO(Integer idTurno,Integer idServicio,Date fechaTurno,Date horaInicio,Date horaFin,Integer estado) {
+		super();
+		this.idTurno=idTurno;
+		this.idServicio=idServicio;
+		this.fechaTurno=fechaTurno;
+		this.horaInicio=horaInicio;
+		this.horaFin=horaFin;
+		this.estado=estado;
+		
+	}
 
 }

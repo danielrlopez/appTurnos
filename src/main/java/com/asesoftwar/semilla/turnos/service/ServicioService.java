@@ -3,6 +3,8 @@ package com.asesoftwar.semilla.turnos.service;
 import java.util.List;
 import java.util.Optional;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
@@ -16,6 +18,8 @@ import com.asesoftwar.semilla.turnos.repository.IServicioRepository;
 @Service
 public class ServicioService implements IServicioService{
 
+	private static final Logger logger  = LoggerFactory.getLogger(ServicioService.class);
+	
 	@Autowired
 	private IServicioRepository servicioRepository;
 	
@@ -68,10 +72,20 @@ public class ServicioService implements IServicioService{
 
 	@Override
 	public ResponseDTO deleteServicio(Integer idServicio) {
+		
+		logger.info("ingreso al metodo deleteservicio");
+		
 		try {
 			servicioRepository.deleteById(idServicio);
+			
+			
+			
+			logger.info("el servicio {} se elimino",idServicio);
+			
 			return new ResponseDTO(null, true, "Servico eliminado", HttpStatus.OK);
 		} catch (Exception e) {
+			
+			logger.error("Error {}",e.getMessage());
 			return new ResponseDTO(null, false, "el servicio no pudo ser eliminado", HttpStatus.OK);
 		}
 	}

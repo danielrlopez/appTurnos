@@ -3,6 +3,8 @@ package com.asesoftwar.semilla.turnos.service;
 import java.util.List;
 import java.util.Optional;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
@@ -18,6 +20,7 @@ import com.asesoftwar.semilla.turnos.repository.ITurnoRepository;
 @Service
 public class ComercioService implements IComercioService {
 	
+	private static final Logger logger  = LoggerFactory.getLogger(ComercioService.class);
 	
 	@Autowired
 	private IComercioRepository comercioRepository;
@@ -64,10 +67,19 @@ public class ComercioService implements IComercioService {
 	}
 	@Override
 	public ResponseDTO deleteComercio(Integer id_comercio) {
+		
+		logger.info("ingreso al metodo deleteComercio");
+		
 		try {
 			comercioRepository.deleteById(id_comercio);
+			
+			logger.info("el comercio {} se elimino",id_comercio);
+			
 			return new ResponseDTO(null, true, "comercio eliminado", HttpStatus.OK) ;
 		} catch (Exception e) {
+			
+			logger.error("Error {}",e.getMessage());
+			
 			return new ResponseDTO(null, false, "el comercio no se puede eliminar", HttpStatus.OK) ;
 		}
 	}
